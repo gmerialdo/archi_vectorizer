@@ -9,7 +9,10 @@ def process(pdf_path):
 
     walls=detect_walls(img)
     rooms=detect_rooms(img)
-    text=extract_text(img)
+    try:
+        text = extract_text(img)
+    except Exception:
+        text = "OCR unavailable"
 
     return {
         "walls":walls[:20],
